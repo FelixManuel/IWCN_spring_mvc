@@ -1,7 +1,10 @@
-package Controller;
+package es.urjc.products.Controller;
 
 import Model.Product;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class ProductController {
+    //Atributter
+    private List<Product> products;
     
     @RequestMapping(value="/", method=RequestMethod.GET)
     public ModelAndView home(){
@@ -19,12 +24,21 @@ public class ProductController {
     
     @RequestMapping(value="/products", method=RequestMethod.GET)
     public ModelAndView listProducts(){
-        return new ModelAndView("listProducts_template");
+        this.products = new ArrayList<Product>();
+        Product producto = new Product();
+        producto.setName("Chorizo");
+        this.products.add(producto);
+        return new ModelAndView("listProducts_template").addObject("products", this.products);
+    }
+    
+    @RequestMapping(value="/products/forms", method=RequestMethod.GET)
+    public ModelAndView formProduct(){
+        return new ModelAndView("createProduct_template");
     }
     
     @RequestMapping(value="/products", method=RequestMethod.POST)
     public ModelAndView createProduct(){
-        return new ModelAndView("createProduct_template");
+        return new ModelAndView("home_template");
     }
     
     @RequestMapping(value="/products/{id}", method=RequestMethod.GET)
