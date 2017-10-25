@@ -8,24 +8,27 @@
     </head>
     <body>
         <header> 
-            <h1><a href="http://127.0.0.1:8080/">Bienvenido a la tienda</a></h1>
+            <a href="http://127.0.0.1:8080/"><h1 th:text="#{welcome}"></h1></a>
         </header>
         <aside>
             <ul>
-                <li><a href="http://127.0.0.1:8080/products">Listado de productos</a></li>
-                <li><a href="http://127.0.0.1:8080/products/forms">Nuevo producto</a></li>
+                <li><a href="http://127.0.0.1:8080/products"><span th:text="#{productList}"></span></a></li>
+                <li><a href="http://127.0.0.1:8080/products/forms"><span th:text="#{newProduct}"></span></a></li>
             </ul>
         </aside>
         <section>
-            <form action="/products" method="post">
-                Nombre: <input type="text" name="name"/>
+            <form id="createProduct" action="/products" method="post">
+                <label for="name"><span th:text="#{productName}"></span>:</label>
+                <input type="text" name="name"/>
                 <br/>
-                Descripción: <textarea name="description"></textarea>
+                <label for="description"><span th:text="#{productDescription}"></span>:</label>
+                <textarea name="description"></textarea>
                 <br/>
-                Precio: <input type="number" name="price"/>
+                <label for="price"><span th:text="#{productPrice}"></span>:</label>
+                <input type="number" name="price"/>
                 <br/>
-                <input type="submit" value="Enviar"/>
             </form>
+            <button type="submit" form="createProduct" value="Submit"><span th:text="#{send}"></span></button>
         </section>
         <footer></footer>
     </body>

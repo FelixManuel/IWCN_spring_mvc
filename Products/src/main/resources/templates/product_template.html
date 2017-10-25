@@ -4,25 +4,25 @@
         <title>Gestor de Productos</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link type="text/css" rel="stylesheet" href="css/product.css"/>
+        <link type="text/css" rel="stylesheet" href="../css/product.css"/>
     </head>
     <body>
         <header> 
-            <h1><a href="http://127.0.0.1:8080/">Bienvenido a la tienda</a></h1>
+            <a href="http://127.0.0.1:8080/"><h1 th:text="#{welcome}"></h1></a>
         </header>
         <aside>
             <ul>
-                <li><a href="http://127.0.0.1:8080/products">Listado de productos</a></li>
-                <li><a href="http://127.0.0.1:8080/products/forms">Nuevo producto</a></li>
+                <li><a href="http://127.0.0.1:8080/products"><span th:text="#{productList}"></span></a></li>
+                <li><a href="http://127.0.0.1:8080/products/forms"><span th:text="#{newProduct}"></span></a></li>
             </ul>
         </aside>
         <section>
-            <h3>Producto</h3>
-            Nombre: <span th:text="${product.name}"></span>
+            <h3 th:text="#{product}">Producto</h3>
+            <span th:text="#{productName}"></span>: <span th:text="${product.name}"></span>
             <br/>
-            Descripción: <span th:text="${product.description}"></span>
+            <span th:text="#{productDescription}"></span>: <span th:text="${product.description}"></span>
             <br/>
-            Precio: <span th:text="${product.price}"></span>
+            <span th:text="#{productPrice}"></span>: <span th:text="${product.price}"></span>
         </section>
         <footer></footer>
     </body>

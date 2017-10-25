@@ -10,6 +10,17 @@ public class Product {
     private String description;
     private double price;
     
+    //Temporal Attribute
+    private static int count = 0;
+    
+    //Constructor
+    public Product(String name, String description, double price){
+        this.id = count++;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
+    
     //Getter method
     public int getId(){
         return this.id;

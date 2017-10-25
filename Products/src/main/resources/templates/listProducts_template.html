@@ -8,21 +8,27 @@
     </head>
     <body>
         <header> 
-            <h1><a href="http://127.0.0.1:8080/">Bienvenido a la tienda</a></h1>
+            <a href="http://127.0.0.1:8080/"><h1 th:text="#{welcome}"></h1></a>
         </header>
         <aside>
             <ul>
-                <li><a href="http://127.0.0.1:8080/products">Listado de productos</a></li>
-                <li><a href="http://127.0.0.1:8080/products/forms">Nuevo producto</a></li>
+                <li><a href="http://127.0.0.1:8080/products"><span th:text="#{productList}"></span></a></li>
+                <li><a href="http://127.0.0.1:8080/products/forms"><span th:text="#{newProduct}"></span></a></li>
             </ul>
         </aside>
         <section>
-            <ul th:each="product: ${products}">
-                <li th:text="${product.name}"></li>
-                <form th:action="'/products/' + ${product.id}" th:method="delete">
-                    <input type="submit" value="Borrar"/>
-                </form>
-            </ul>
+            <table>                
+                <tr th:each="product: ${products}">
+                    <td>
+                        <a th:href="'http://127.0.0.1:8080/products/' + ${product.id}"><span th:text="${product.name}"></span></a>
+                    </td>
+                    <td>
+                        <form th:action="'/products/' + ${product.id}" th:method="delete">
+                            <input type="submit" value="Borrar"/>
+                        </form>
+                    </td>
+                </tr>                
+            </table>
         </section>
         <footer></footer>
     </body>
