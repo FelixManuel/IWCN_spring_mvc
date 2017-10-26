@@ -10,13 +10,19 @@
     </head>
     <body class="container">
         <header class="jumbotron"> 
-            <a href="http://127.0.0.1:1234/"><h1 th:text="#{welcome}"></h1></a>
+            <div class="row">
+                <a th:href="@{?lang=es}"><img src="/images/es.jpg"/></a>
+                <a th:href="@{?lang=en}"><img src="/images/en.jpg"/></a>
+            </div>
+            <div class="row">
+                <a th:href="@{/}"><h1 th:text="#{welcome}"></h1></a>
+            </div>
         </header>
         <div class="row">
             <aside class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                 <ul class="list-group">
-                    <li class="list-group-item"><a href="http://127.0.0.1:1234/products"><span th:text="#{productList}"></span></a></li>
-                    <li class="list-group-item"><a href="http://127.0.0.1:1234/products/forms"><span th:text="#{newProduct}"></span></a></li>
+                    <li class="list-group-item"><a th:href="@{/products}"><span th:text="#{productList}"></span></a></li>
+                    <li class="list-group-item"><a th:href="@{/products/forms}"><span th:text="#{newProduct}"></span></a></li>
                 </ul>
             </aside>
             <section class="col-lg-9 col-md-9 col-sm-9 col-xs-9"></section>
