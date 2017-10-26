@@ -27,11 +27,11 @@ public class ProductController {
     }
     
     @RequestMapping(value="/products", method=RequestMethod.POST)
-    public ModelAndView createProduct(@RequestParam("name") String name, @RequestParam("description") String description,
+    public String createProduct(@RequestParam("name") String name, @RequestParam("description") String description,
                                       @RequestParam("price") double price){
         Product product = new Product(name, description, price);
         this.products.add(product);
-        return new ModelAndView("home_template");
+        return "redirect:/";
     }
     
     @RequestMapping(value="/products", method=RequestMethod.GET)
@@ -51,8 +51,9 @@ public class ProductController {
     }
     
     @RequestMapping(value="/products/{id}", method=RequestMethod.DELETE)
-    public ModelAndView deleteProduct(){
-        return listProducts();
+    public String deleteProduct(@PathVariable int id){
+        this.products.remove(id);
+        return "redirect:/products";
     }
     
     private Product extractProduct(int id){
